@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ClienteService from '../services/ClienteService';
 
 class ListaCliente extends Component {
     constructor(props) {
@@ -10,6 +11,11 @@ class ListaCliente extends Component {
     }
 }
 
+    componentDidMount(){
+        ClienteService.getClientes().then((res) => {
+            this.setState({ clientes: res.data});
+        });
+    }
 
     render() {
         return (
@@ -19,7 +25,7 @@ class ListaCliente extends Component {
                     <table className="table table-striped table-bordered">
                         <thead>
                         <tr>
-                                <th>#</th>
+                                
                                 <th>CPF</th>
                                 <th>Nome</th>
                                 <th>Sobrenome</th>
@@ -30,6 +36,7 @@ class ListaCliente extends Component {
                                 <th>E-mail</th>
                                 <th>Senha</th>
                                 <th>Telefone</th>
+                                <th>Gerenciar Dados</th>
                         </tr>
                         </thead>
 
@@ -45,11 +52,11 @@ class ListaCliente extends Component {
                                         <td>{cliente.bairro}</td>
                                         <td>{cliente.cidade}</td>
                                         <td>{cliente.estado}</td>
-                                        <td>{cliente.email}</td>ds
+                                        <td>{cliente.email}</td>
                                         <td>{cliente.senha}</td>
                                         <td>{cliente.telefone}</td>
                                         <td>
-                                            <a className="btn btn-danger" type="submit" href="ClienteDelete?clienteId=${cliente.id}">Deletar</a>
+                                            <a className="btn btn-danger" type="submit" href="clientes/{id}">Deletar</a>
                                             <a className="btn btn-success" type="submit" href="ClienteUpdate?clienteId=${cliente.id}">Atualizar</a>
                                         </td>
                                     </tr>

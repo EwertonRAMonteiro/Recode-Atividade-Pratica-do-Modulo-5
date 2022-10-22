@@ -20,6 +20,7 @@ import com.example.demo.ResourceNotFoundException;
 import com.example.demo.entities.Cliente;
 import com.example.demo.repositorys.ClienteRepository;
 
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
