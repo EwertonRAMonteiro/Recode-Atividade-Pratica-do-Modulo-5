@@ -118,7 +118,7 @@ export default function Create() {
 								id="Bairro"
 								className="form-control s"
 								placeholder="Bairro"
-								value={nome}
+								value={bairro}
 								onChange={(e) => setBairro(e.target.value)}
 							/>
 						</div>

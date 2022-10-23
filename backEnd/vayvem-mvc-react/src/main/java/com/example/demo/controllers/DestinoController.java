@@ -44,23 +44,23 @@ public class DestinoController {
 		 return ResponseEntity.ok(destino);
 	}
 	
-	@PostMapping("/destino")
+	@PostMapping("/destinos")
 	public Destino createDestino(@RequestBody Destino destino) {
 		return destinoRepository.save(destino);
 	}
 	
 	@PutMapping("destinos/{id}")
-	public ResponseEntity<Destino> updateSala(@PathVariable Long id, @RequestBody Destino destinoDetails){
+	public ResponseEntity<Destino> updateDestino(@PathVariable Long id, @RequestBody Destino destinosDetails){
 		
 		Destino destino = destinoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Destino Inexistente"));
-		Cliente cliente = clienteRepository.findById(destinoDetails.getCliente().getId()).get();
+		Cliente cliente = clienteRepository.findById(destinosDetails.getCliente().getId()).get();
 		
-		destino.setNomeDestino(destinoDetails.getNomeDestino());
-		destino.setCidade(destinoDetails.getCidade());
-		destino.setEstado(destinoDetails.getEstado());
-		destino.setIda(destinoDetails.getIda());
-		destino.setVolta(destinoDetails.getVolta());
-		destino.setValor(destinoDetails.getValor());
+		destino.setNomeDestino(destinosDetails.getNomeDestino());
+		destino.setCidade(destinosDetails.getCidade());
+		destino.setEstado(destinosDetails.getEstado());
+		destino.setIda(destinosDetails.getIda());
+		destino.setVolta(destinosDetails.getVolta());
+		destino.setValor(destinosDetails.getValor());
 		destino.setCliente(cliente);
 		
 		

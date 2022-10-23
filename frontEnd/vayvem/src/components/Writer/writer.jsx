@@ -20,7 +20,7 @@ function Writer() {
 				autoStart: true,
 				loop: true,
 				deleteSpeed: 70,
-        delay: 230,
+        delay: 150,
         
 			}}
 		/>

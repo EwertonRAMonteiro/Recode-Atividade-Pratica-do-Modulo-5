@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,13 +17,15 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "cliente")
 public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	private Long id;
+	private long id;
 	
 	@Column(name = "nome", length = 20, nullable = false)
 	private String nome;
@@ -59,36 +62,22 @@ public class Cliente {
 	@Size(min = 8, message = "A senha deve ter no minimo 8 caracteres")
 	private String senha;
 	
-	@OneToMany(mappedBy = "cliente")
+	@JsonIgnore
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Hospedagem> hospedagems = new ArrayList<Hospedagem>();
 	
-	@OneToMany(mappedBy = "cliente")
+	@JsonIgnore
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Destino> destinos = new ArrayList<Destino>();
-	
-
-	public List<Destino> getDestinos() {
-		return destinos;
-	}
-
-	public void setDestinos(List<Destino> destinos) {
-		this.destinos = destinos;
-	}
-
-	public List<Hospedagem> getHospedagem() {
-		return hospedagems;
-	}
-
-	public void setHospedagem(List<Hospedagem> hospedagems) {
-		this.hospedagems = hospedagems;
-	}
-	
 
 	public Cliente() {
-		super();
+		
 	}
 
-	public Cliente(Long id, String nome, String sobrenome, String cpf, String rua, String bairro, String cidade,
-			String estado, String telefone, String email, String senha) {
+	public Cliente(long id, String nome, String sobrenome, @CPF(message = "CPF Invalido") String cpf, String rua,
+			String bairro, String cidade, String estado, String telefone,
+			@Email(message = "Email invalido") String email,
+			@NotEmpty(message = "A senha deve ser informada") @Size(min = 8, message = "A senha deve ter no minimo 8 caracteres") String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -103,11 +92,11 @@ public class Cliente {
 		this.senha = senha;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -190,9 +179,23 @@ public class Cliente {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
-	
-	
 
+	public List<Hospedagem> getHospedagems() {
+		return hospedagems;
+	}
+
+	public void setHospedagems(List<Hospedagem> hospedagems) {
+		this.hospedagems = hospedagems;
+	}
+
+	public List<Destino> getDestinos() {
+		return destinos;
+	}
+
+	public void setDestinos(List<Destino> destinos) {
+		this.destinos = destinos;
+	}
+	
 }
+
+	

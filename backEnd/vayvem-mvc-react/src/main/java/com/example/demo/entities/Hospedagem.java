@@ -1,7 +1,9 @@
 package com.example.demo.entities;
 
-import java.time.LocalDate;
+import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,12 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "hospedagem")
-public class Hospedagem {
+public class Hospedagem implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,14 +36,16 @@ public class Hospedagem {
 	private Float valor;
 	
 	@Column(name = "checkin", nullable = false)
+	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private LocalDate checkin;
+	private Date checkin;
 	
 	@Column(name = "checkout", nullable = true)
+	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private LocalDate checkout;
+	private Date checkout;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
@@ -46,7 +53,7 @@ public class Hospedagem {
 		super();
 	}
 
-	public Hospedagem(Long id, String nomeHotel, String endereco, Float valor, LocalDate checkin, LocalDate checkout) {
+	public Hospedagem(Long id, String nomeHotel, String endereco, Float valor, Date checkin, Date checkout) {
 		super();
 		this.id = id;
 		this.nomeHotel = nomeHotel;
@@ -88,19 +95,19 @@ public class Hospedagem {
 		this.valor = valor;
 	}
 
-	public LocalDate getCheckin() {
+	public Date getCheckin() {
 		return checkin;
 	}
 
-	public void setCheckin(LocalDate checkin) {
+	public void setCheckin(Date checkin) {
 		this.checkin = checkin;
 	}
 
-	public LocalDate getCheckout() {
+	public Date getCheckout() {
 		return checkout;
 	}
 
-	public void setCheckout(LocalDate checkout) {
+	public void setCheckout(Date checkout) {
 		this.checkout = checkout;
 	}
 

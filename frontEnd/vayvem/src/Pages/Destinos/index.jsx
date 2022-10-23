@@ -60,7 +60,7 @@ export default function Index() {
                   <td className="d-flex justify-content-end">
                     <Link
                       to={`/Destinos-Update/${destino.id}`}
-                      className="btn btn-info"
+                      className="btn btn-warning"
                     >
                       Editar
                     </Link>

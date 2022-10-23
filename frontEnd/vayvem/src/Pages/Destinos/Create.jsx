@@ -17,7 +17,7 @@ export default function Create() {
 	useEffect(() => {
 		Api.get('/clientes')
 			.then((response) => {
-				setJogos(response.data)
+				setClientes(response.data)
 			})
 			.catch((error) => {
 				console.log(error)
@@ -61,7 +61,7 @@ export default function Create() {
 			}
 		}
 
-		getClienteById()
+		getDestinoById()
 	}, [id])
 
 	return (
@@ -77,7 +77,7 @@ export default function Create() {
 								type="text"
 								id="NomeDestino"
 								className="form-control s"
-								placeholder="Nome"
+								placeholder="NomeDestino"
 								value={nomeDestino}
 								onChange={(e) => setNomeDestino(e.target.value)}
 							/>
@@ -167,7 +167,7 @@ export default function Create() {
           <div className="d-grid-sm d-flex justify-content-center">
 					<button
 						type="submit"
-						className="btn btn-primary"
+						className="btn btn-success"
 						onClick={(e) => criarOuEditarDestino(e)}
 					>
 						Enviar

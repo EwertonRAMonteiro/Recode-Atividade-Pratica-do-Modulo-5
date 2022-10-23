@@ -41,11 +41,11 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/clientes")
-	public Cliente createJogo(@RequestBody Cliente cliente) {
+	public Cliente createCliente(@RequestBody Cliente cliente) {
 		return clienteRepository.save(cliente);
 	}
 	
-	@PutMapping("clientes/{id}")
+	@PutMapping("/clientes/{id}")
 	public ResponseEntity<Cliente> updateCliente(@PathVariable Long id, @RequestBody Cliente clientesDetails){
 		
 		Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("cliente Inexistente"));

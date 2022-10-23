@@ -16,7 +16,7 @@ export default function Create() {
 	useEffect(() => {
 		Api.get('/clientes')
 			.then((response) => {
-				setJogos(response.data)
+				setClientes(response.data)
 			})
 			.catch((error) => {
 				console.log(error)
@@ -77,7 +77,7 @@ export default function Create() {
 								className="form-control s"
 								placeholder="NomeHotel"
 								value={nomeHotel}
-								onChange={(e) => setNomeHospedagem(e.target.value)}
+								onChange={(e) => setNomeHotel(e.target.value)}
 							/>
 						</div>
 					</div>

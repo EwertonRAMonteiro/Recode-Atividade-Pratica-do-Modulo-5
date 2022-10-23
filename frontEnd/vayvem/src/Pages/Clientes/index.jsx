@@ -13,7 +13,7 @@ export default function Index() {
   useEffect(() => {
     Api.get('/clientes')
       .then((response) => {
-        setJogos(response.data);
+        setClientes(response.data);
         setRedirect(false);
       })
       .catch((error) => {

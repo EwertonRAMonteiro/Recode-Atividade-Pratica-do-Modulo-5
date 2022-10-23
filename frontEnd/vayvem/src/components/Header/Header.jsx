@@ -10,7 +10,7 @@ function Header() {
 		<header className="container">
 			<nav>
 				<label className="logo">
-					<img src="./src/components/Header/logoIconeNav.png" alt="log.png" />
+					<img src="./src/components/Header/logoIcone.png" alt="log.png" />
 				</label>
 				<input type="checkbox" id="check" />
 				<label for="check" className="button">

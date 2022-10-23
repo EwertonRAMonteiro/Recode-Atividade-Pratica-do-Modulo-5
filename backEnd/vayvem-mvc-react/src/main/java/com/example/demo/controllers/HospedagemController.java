@@ -34,32 +34,35 @@ public class HospedagemController {
 	private HospedagemRepository hospedagemRepository;
 	
 	@GetMapping("/hospedagems")
-	public List<Hospedagem> getAllHospedagem(){
+	public List<Hospedagem> getAllHospedagems(){
 		return hospedagemRepository.findAll();
 	}
 	
-	@GetMapping("/hospedagem/{id}")
+	@GetMapping("/hospedagems/{id}")
 	public ResponseEntity<Hospedagem> getHospedagemById(@PathVariable Long id) {
 		Hospedagem hospedagem = hospedagemRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Hospedagem inexistente"));
 		 return ResponseEntity.ok(hospedagem);
 	}
 	
-	@PostMapping("/hospedagem")
+	@PostMapping("/hospedagems")
 	public Hospedagem createHospedagem(@RequestBody Hospedagem hospedagem) {
+		Cliente cliente = clienteRepository.findById(hospedagem.getCliente().getId()).get();
+		hospedagem.setCliente(cliente);
+		
 		return hospedagemRepository.save(hospedagem);
 	}
 	
 	@PutMapping("hospedagems/{id}")
-	public ResponseEntity<Hospedagem> updatehospedagem(@PathVariable Long id, @RequestBody Hospedagem HospedagemDetails){
+	public ResponseEntity<Hospedagem> updateHospedagem(@PathVariable Long id, @RequestBody Hospedagem hospedagemsDetails){
 		
 		Hospedagem hospedagem = hospedagemRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Hospedagem Inexistente"));
-		Cliente cliente = clienteRepository.findById(HospedagemDetails.getCliente().getId()).get();
+		Cliente cliente = clienteRepository.findById(hospedagemsDetails.getCliente().getId()).get();
 		
-		hospedagem.setNomeHotel(HospedagemDetails.getNomeHotel());
-		hospedagem.setEndereco(HospedagemDetails.getEndereco());
-		hospedagem.setValor(HospedagemDetails.getValor());
-		hospedagem.setCheckin(HospedagemDetails.getCheckin());
-		hospedagem.setCheckout(HospedagemDetails.getCheckout());
+		hospedagem.setNomeHotel(hospedagemsDetails.getNomeHotel());
+		hospedagem.setEndereco(hospedagemsDetails.getEndereco());
+		hospedagem.setValor(hospedagemsDetails.getValor());
+		hospedagem.setCheckin(hospedagemsDetails.getCheckin());
+		hospedagem.setCheckout(hospedagemsDetails.getCheckout());
 		hospedagem.setCliente(cliente);
 		
 	    Hospedagem newHospedagem = hospedagemRepository.save(hospedagem);
@@ -68,7 +71,7 @@ public class HospedagemController {
 		}
 	
 	@DeleteMapping("/hospedagems/{id}")
-	public ResponseEntity<Map<String, Boolean>> deleteDestino(@PathVariable Long id){
+	public ResponseEntity<Map<String, Boolean>> deleteHospedagem(@PathVariable Long id){
 		
 		Hospedagem hospedagem = hospedagemRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Hospedagem Inexistente"));
 		

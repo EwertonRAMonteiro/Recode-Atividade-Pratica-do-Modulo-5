@@ -8,8 +8,8 @@ import {
 import Home from "./Pages/Home/Home";
 import Clientes from "./Pages/Clientes";
 import ClientesCreate from "./Pages/Clientes/Create";
-import Destinos from "./Pages/Clientes";
-import DestinosCreate from "./Pages/Clientes/Create";
+import Destinos from "./Pages/Destinos";
+import DestinosCreate from "./Pages/Destinos/Create";
 import Hospedagems from "./Pages/Hospedagems";
 import HospedagemsCreate from "./Pages/Hospedagems/Create";
 
