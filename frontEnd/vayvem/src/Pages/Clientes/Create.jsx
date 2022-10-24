@@ -192,18 +192,11 @@ export default function Create() {
 						Enviar
 					</button>
 					<Link
-						to="/Destinos"
+						to="/Clientes"
 						className="btn btn-danger"
 						style={{ marginLeft: '10px' }}
 					>
-						Cancelar Destino
-					</Link>
-                    <Link
-						to="/Hospedagems"
-						className="btn btn-danger"
-						style={{ marginLeft: '10px' }}
-					>
-						Cancelar Hospedagem
+						Cancelar
 					</Link>
           </div>
 				</fieldset>

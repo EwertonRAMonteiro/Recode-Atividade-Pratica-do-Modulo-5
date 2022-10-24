@@ -46,6 +46,9 @@ public class DestinoController {
 	
 	@PostMapping("/destinos")
 	public Destino createDestino(@RequestBody Destino destino) {
+		Cliente cliente = clienteRepository.findById(destino.getCliente().getId()).get();
+		destino.setCliente(cliente);
+		
 		return destinoRepository.save(destino);
 	}
 	

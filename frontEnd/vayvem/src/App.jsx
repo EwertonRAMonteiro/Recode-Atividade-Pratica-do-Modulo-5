@@ -27,7 +27,7 @@ function App() {
         <Route path="/Clientes-Create" element={<ClientesCreate />} />
         <Route path="/Clientes-Update/:id" element={<ClientesCreate />} />
       	<Route path="/Destinos" element={<Destinos />} />
-        <Route path="/Detinos-Create" element={<DestinosCreate />} />
+        <Route path="/Destinos-Create" element={<DestinosCreate />} />
         <Route path="/Destinos-Update/:id" element={<DestinosCreate />} />
         <Route path="/Hospedagems" element={<Hospedagems />} />
         <Route path="/Hospedagems-Create" element={<HospedagemsCreate />} />

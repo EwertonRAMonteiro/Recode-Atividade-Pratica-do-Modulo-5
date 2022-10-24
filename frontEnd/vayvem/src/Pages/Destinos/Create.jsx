@@ -10,7 +10,7 @@ export default function Create() {
     const [volta, setVolta] = useState('')
     const [valor, setValor] = useState('')
 	const [cliente, setCliente] = useState({ id: 0 })
-	const [clientes, setClientes] = useState([])
+	const [Clientes, setClientes] = useState([])
 	const { id } = useParams()
 	const navigate = useNavigate()
 
@@ -156,7 +156,7 @@ export default function Create() {
 								<option value="DEFAULT">
 									{id ? cliente.nome : 'escolha um cliente'}
 								</option>
-								{clientes.map((cliente) => (
+								{Clientes.map((cliente) => (
 									<option key={cliente.id} value={cliente.id}>
 										{cliente.nome}
 									</option>
