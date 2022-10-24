@@ -30,11 +30,8 @@ public class Destino implements Serializable{
 	@Column(name = "nome_destino", length = 40, nullable = false)
 	private String nomeDestino;
 	
-	@Column(name = "cidade", length = 40, nullable = false)
-	private String cidade;
-	
-	@Column(name = "estado", length = 25, nullable = false)
-	private String estado;
+	@Column(name = "endereco", length = 40, nullable = false)
+	private String endereco;
 	
 	@Column(name = "ida", nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -57,13 +54,11 @@ public class Destino implements Serializable{
 		super();
 	}
 
-	public Destino(Long id, String nomeDestino, String cidade, String estado, Date ida, Date volta,
-			Float valor) {
+	public Destino(Long id, String nomeDestino, String endereco, Date ida, Date volta, Float valor) {
 		super();
 		this.id = id;
 		this.nomeDestino = nomeDestino;
-		this.cidade = cidade;
-		this.estado = estado;
+		this.endereco = endereco;
 		this.ida = ida;
 		this.volta = volta;
 		this.valor = valor;
@@ -85,20 +80,12 @@ public class Destino implements Serializable{
 		this.nomeDestino = nomeDestino;
 	}
 
-	public String getCidade() {
-		return cidade;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public Date getIda() {
@@ -133,8 +120,10 @@ public class Destino implements Serializable{
 		this.cliente = cliente;
 	}
 
-	
-	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	
 
 }

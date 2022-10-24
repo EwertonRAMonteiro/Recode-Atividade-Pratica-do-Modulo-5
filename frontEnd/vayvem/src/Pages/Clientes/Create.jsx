@@ -5,21 +5,15 @@ import Api from '../../Api/Api'
 export default function Create() {
     const [cpf, setCpf] = useState('')
 	const [nome, setNome] = useState('')
-    const [sobrenome, setSobrenome] = useState('')
-    const [rua, setRua] = useState('')
-    const [bairro, setBairro] = useState('')
-    const [cidade, setCidade] = useState('')
-    const [estado, setEstado] = useState('')
+    const [endereco, setEndereco] = useState('')
     const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-	const [telefone, setTelefone] = useState('')
 	const { id } = useParams()
 	const navigate = useNavigate()
 
 	const criarOuEditarCliente = (e) => {
 		e.preventDefault()
 
-		const cliente = { cpf, nome, sobrenome, rua, bairro, cidade, estado, email, senha, telefone}
+		const cliente = { cpf, nome, endereco, email}
 
 		if (id) {
 			Api.put('/clientes/' + id, cliente).then((response) => {
@@ -39,14 +33,8 @@ export default function Create() {
 					.then((response) => {
                         setCpf(response.data.cpf)
 						setNome(response.data.nome)
-						setSobrenome(response.data.sobrenome)
-                        setRua(response.data.rua)
-                        setBairro(response.data.bairro)
-                        setCidade(response.data.cidade)
-                        setEstado(response.data.estado)
+						setEndereco(response.data.endereco)
                         setEmail(response.data.email)
-                        setSenha(response.data.senha)
-                        setTelefone(response.data.telefone)
 					})
 					.catch((error) => {
 						console.log(error)
@@ -91,59 +79,11 @@ export default function Create() {
 						<div className="align">
 							<input
 								type="text"
-								id="Sobrenome"
+								id="Endereco"
 								className="form-control s"
-								placeholder="Sobrenome"
-								value={sobrenome}
-								onChange={(e) => setSobrenome(e.target.value)}
-							/>
-						</div>
-					</div>
-                    <div className="mb-3">
-						<div className="align">
-							<input
-								type="text"
-								id="Rua"
-								className="form-control s"
-								placeholder="Rua"
-								value={rua}
-								onChange={(e) => setRua(e.target.value)}
-							/>
-						</div>
-					</div>
-                    <div className="mb-3">
-						<div className="align">
-							<input
-								type="text"
-								id="Bairro"
-								className="form-control s"
-								placeholder="Bairro"
-								value={bairro}
-								onChange={(e) => setBairro(e.target.value)}
-							/>
-						</div>
-					</div>
-                    <div className="mb-3">
-						<div className="align">
-							<input
-								type="text"
-								id="Cidade"
-								className="form-control s"
-								placeholder="Cidade"
-								value={cidade}
-								onChange={(e) => setCidade(e.target.value)}
-							/>
-						</div>
-					</div>
-                    <div className="mb-3">
-						<div className="align">
-							<input
-								type="text"
-								id="Estado"
-								className="form-control s"
-								placeholder="Estado"
-								value={estado}
-								onChange={(e) => setEstado(e.target.value)}
+								placeholder="Endereco"
+								value={endereco}
+								onChange={(e) => setEndereco(e.target.value)}
 							/>
 						</div>
 					</div>
@@ -159,37 +99,13 @@ export default function Create() {
 							/>
 						</div>
 					</div>
-                    <div className="mb-3">
-						<div className="align">
-							<input
-								type="text"
-								id="Senha"
-								className="form-control s"
-								placeholder="Senha"
-								value={senha}
-								onChange={(e) => setSenha(e.target.value)}
-							/>
-						</div>
-					</div>
-                    <div className="mb-3">
-						<div className="align">
-							<input
-								type="text"
-								id="Telefone"
-								className="form-control s"
-								placeholder="Telefone"
-								value={telefone}
-								onChange={(e) => setTelefone(e.target.value)}
-							/>
-						</div>
-					</div>
           <div className="d-flex justify-content-center">
 					<button
 						type="submit"
 						className="btn btn-primary"
 						onClick={(e) => criarOuEditarCliente(e)}
 					>
-						Enviar
+						Cadastrar
 					</button>
 					<Link
 						to="/Clientes"

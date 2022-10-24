@@ -59,8 +59,7 @@ public class DestinoController {
 		Cliente cliente = clienteRepository.findById(destinosDetails.getCliente().getId()).get();
 		
 		destino.setNomeDestino(destinosDetails.getNomeDestino());
-		destino.setCidade(destinosDetails.getCidade());
-		destino.setEstado(destinosDetails.getEstado());
+		destino.setEndereco(destinosDetails.getEndereco());
 		destino.setIda(destinosDetails.getIda());
 		destino.setVolta(destinosDetails.getVolta());
 		destino.setValor(destinosDetails.getValor());

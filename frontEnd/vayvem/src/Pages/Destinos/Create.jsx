@@ -4,8 +4,7 @@ import Api from '../../Api/Api'
 
 export default function Create() {
 	const [nomeDestino, setNomeDestino] = useState('')
-    const [cidade, setCidade] = useState('')
-    const [estado, setEstado] = useState('')
+    const [endereco, setEndereco] = useState('')
     const [ida, setIda] = useState('')
     const [volta, setVolta] = useState('')
     const [valor, setValor] = useState('')
@@ -27,7 +26,7 @@ export default function Create() {
 	const criarOuEditarDestino = (e) => {
 		e.preventDefault()
 
-		const destino = { nomeDestino, cidade, estado, ida, volta, valor, cliente }
+		const destino = { nomeDestino, endereco, ida, volta, valor, cliente }
 
 		if (id) {
 			Api.put('/destinos/' + id, destino).then((response) => {
@@ -46,8 +45,7 @@ export default function Create() {
 				Api.get(`/destinos/${id}`)
 					.then((response) => {
 						setNomeDestino(response.data.nomeDestino)
-                        setCidade(response.data.cidade)
-                        setEstado(response.data.estado)
+                        setEndereco(response.data.endereco)
                         setIda(response.data.ida)
                         setVolta(response.data.volta)
                         setValor(response.data.valor)
@@ -87,23 +85,11 @@ export default function Create() {
 						<div className="align">
 							<input
 								type="text"
-								id="Cidade"
+								id="Endereco"
 								className="form-control s"
-								placeholder="Cidade"
-								value={cidade}
-								onChange={(e) => setCidade(e.target.value)}
-							/>
-						</div>
-					</div>
-                    <div className="mb-3">
-						<div className="align">
-							<input
-								type="text"
-								id="Estado"
-								className="form-control s"
-								placeholder="Estado"
-								value={estado}
-								onChange={(e) => setEstado(e.target.value)}
+								placeholder="Endereco"
+								value={endereco}
+								onChange={(e) => setEndereco(e.target.value)}
 							/>
 						</div>
 					</div>
@@ -170,7 +156,7 @@ export default function Create() {
 						className="btn btn-success"
 						onClick={(e) => criarOuEditarDestino(e)}
 					>
-						Enviar
+						Cadastrar
 					</button>
 					<Link
 						to="/Destinos"

@@ -119,6 +119,4 @@ public class Hospedagem implements Serializable{
 		this.cliente = cliente;
 	}
 	
-	
-
 }

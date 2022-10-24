@@ -5,6 +5,7 @@ function Footer() {
 	return (
 		<div>
 			<footer>
+			<br />
 				<p>&copy; - Vayvem </p>
 			</footer>
 		</div>

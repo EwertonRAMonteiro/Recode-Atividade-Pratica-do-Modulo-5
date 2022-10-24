@@ -7,9 +7,6 @@ export default function Index() {
   const [clientes, setClientes] = useState([]);
   const [redirect, setRedirect] = useState(false);
 
-
- 
-
   useEffect(() => {
     Api.get('/clientes')
       .then((response) => {
@@ -35,7 +32,7 @@ export default function Index() {
       </header>
       <div className="container p-3">
         <Link to="/Clientes-Create" className="btn btn-sakura mb-2">
-          Postar Cliente
+          Cadastrar Cliente
         </Link>
         <div className="table-responsive d-flex justify-content-center">
           <table className="table table-hover table-sm table-colors">
@@ -44,14 +41,8 @@ export default function Index() {
                 <th>ID</th>
                 <th>Cpf</th>
                 <th>Nome</th>
-                <th>Sobrenome</th>
-                <th>Rua</th>
-                <th>Bairro</th>
-                <th>Cidade</th>
-                <th>Estado</th>
+                <th>Endereço</th>
                 <th>Email</th>
-                <th>Senha</th>
-                <th>Telefone</th>
               </tr>
             </thead>
             <tbody>
@@ -60,18 +51,12 @@ export default function Index() {
                   <td className="text-white">{cliente.id}</td>
                   <td className="text-white">{cliente.cpf}</td>
                   <td className="text-white">{cliente.nome}</td>
-                  <td className="text-white">{cliente.sobrenome}</td>
-                  <td className="text-white">{cliente.rua}</td>
-                  <td className="text-white">{cliente.bairro}</td>
-                  <td className="text-white">{cliente.cidade}</td>
-                  <td className="text-white">{cliente.estado}</td>
+                  <td className="text-white">{cliente.endereco}</td>
                   <td className="text-white">{cliente.email}</td>
-                  <td className="text-white">{cliente.senha}</td>
-                  <td className="text-white">{cliente.telefone}</td>
                   <td className="d-flex justify-content-end">
                     <Link
                       to={`/Clientes-Update/${cliente.id}`}
-                      className="btn btn-info"
+                      className="btn btn-warning"
                     >
                       Atualizar
                     </Link>

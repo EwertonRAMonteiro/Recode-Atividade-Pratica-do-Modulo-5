@@ -156,7 +156,7 @@ export default function Create() {
 						className="btn btn-success"
 						onClick={(e) => criarOuEditarHospedagem(e)}
 					>
-						Enviar
+						Cadastrar
 					</button>
 					<Link
 						to="/Hospedagems"

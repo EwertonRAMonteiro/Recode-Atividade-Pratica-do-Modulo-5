@@ -51,13 +51,8 @@ public class ClienteController {
 		Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("cliente Inexistente"));
 		
 		cliente.setNome(clientesDetails.getNome());
-		cliente.setSobrenome(clientesDetails.getSobrenome());
 		cliente.setCpf(clientesDetails.getCpf());
-		cliente.setRua(clientesDetails.getRua());
-		cliente.setBairro(clientesDetails.getBairro());
-		cliente.setCidade(clientesDetails.getCidade());
-		cliente.setEstado(clientesDetails.getEstado());
-		cliente.setTelefone(clientesDetails.getTelefone());
+		cliente.setEndereco(clientesDetails.getEndereco());
 		cliente.setEmail(clientesDetails.getEmail());
 		
 		Cliente newCliente = clienteRepository.save(cliente);

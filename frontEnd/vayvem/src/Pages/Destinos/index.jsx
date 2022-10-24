@@ -30,18 +30,18 @@ export default function Index() {
       </header>
       <div className="container p-3">
         <Link to="/Destinos-Create" className="btn btn-sakura mb-2">
-          Postar Destino
+          Cadastrar Destino
         </Link>
         <div className="table-responsive d-flex justify-content-center">
           <table className="table table-hover table-sm table-colors">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Nome do Destino</th>
+                <th>Destino</th>
                 <th>Cidade</th>
                 <th>Estado</th>
-                <th>Data da ida</th>
-                <th>Data da volta</th>
+                <th>Ida</th>
+                <th>Volta</th>
                 <th>Preço</th>
                 <th>Cliente</th>
               </tr>
@@ -62,7 +62,7 @@ export default function Index() {
                       to={`/Destinos-Update/${destino.id}`}
                       className="btn btn-warning"
                     >
-                      Editar
+                      Atualizar
                     </Link>
                     <button
                       className="btn btn-danger"

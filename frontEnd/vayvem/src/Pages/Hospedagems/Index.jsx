@@ -30,18 +30,18 @@ export default function Index() {
       </header>
       <div className="container p-3">
         <Link to="/Hospedagems-Create" className="btn btn-sakura mb-2">
-          Postar Hospedagem
+          Cadastrar Hospedagem
         </Link>
         <div className="table-responsive d-flex justify-content-center">
           <table className="table table-hover table-sm table-colors">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Nome do Hotel</th>
+                <th>Hotel</th>
                 <th>Cidade</th>
                 <th>Preço</th>
-                <th>Data de Check-In</th>
-                <th>Data da Check-Out</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
                 <th>Cliente</th>
               </tr>
             </thead>
@@ -60,7 +60,7 @@ export default function Index() {
                       to={`/Hospedagems-Update/${hospedagem.id}`}
                       className="btn btn-warning"
                     >
-                      Editar
+                      Atualizar
                     </Link>
                     <button
                       className="btn btn-danger"
